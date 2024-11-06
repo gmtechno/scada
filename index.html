@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electromechanical & SCADA Solutions Company</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script src="scripts.js" defer></script>
+</head>
+<body>
+    <!-- Homepage -->
+    <header>
+        <div class="header-container">
+            <img src="logo.png" alt="Company Logo" class="logo">
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#support">Support</a></li>
+                </ul>
+                <div class="dropdown">
+                    <button class="dropdown-toggle">Learn</button>
+                    <div class="dropdown-menu">
+                        <a href="#about">About</a>
+                        <a href="#projects">Projects List</a>
+                        <a href="#inquiry">Place Inquiry</a>
+                        <a href="#support">Support</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="company-profile" id="about">
+        <h1>Electromechanical & SCADA Solutions Company</h1>
+        <p>We specialize in SCADA, Control Systems, Automation, and Electromechanical solutions to provide our clients with the highest level of service.</p>
+        <h2>Company Profile</h2>
+        <p>Our goal is to implement and deliver quality SCADA systems and electromechanical solutions for diverse industries including infrastructure, automation, and more.</p>
+        <h2>Projects List</h2>
+        <p>We have a history of completing many successful projects in the SCADA field and in industrial automation.</p>
+        <ul class="project-list">
+            <li>Water Treatment Plant Automation</li>
+            <li>HVAC System Control & Monitoring</li>
+            <li>Remote SCADA for Solar Installations</li>
+        </ul>
+    </section>
+
+    <!-- Login Page -->
+    <section class="login-page" id="scada-login">
+        <div class="login-container">
+            <h2>Client Login</h2>
+            <form id="login-form">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="button" onclick="validateLogin()">Login</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- SCADA iframe (Initially hidden) -->
+    <section class="scada-page" id="scada-page" style="display: none;">
+        <div class="scada-container">
+            <iframe id="scada-frame" src="" frameborder="0"></iframe>
+        </div>
+    </section>
+
+    <footer>
+        <p>Contact us at: email@example.com | Phone: +1 234 567 8900</p>
+    </footer>
+</body>
+</html>
