@@ -28,9 +28,13 @@ header {
     margin: 0 auto;
 }
 
-.header-container .logo {
-    height: 50px;
+.header-container /* Logo styling */
+.logo {
+    height: 60px;
+    margin-right: 20px;
+    vertical-align: middle;
 }
+
 
 .nav-links {
     list-style: none;
