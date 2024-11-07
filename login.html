@@ -6,18 +6,17 @@
     <title>Client Login - SCADA Solutions</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/png" href="favicon.png">
-    <script src="scripts.js" defer></script>
 </head>
 <body>
     <section class="login-page">
         <div class="login-container">
             <h2>Client Login</h2>
-            <form id="login-form">
+            <form id="login-form" onsubmit="validateLogin(event)">
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" required>
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required>
-                <button type="button" onclick="validateLogin()">Login</button>
+                <button type="submit">Login</button>
             </form>
         </div>
     </section>
@@ -25,5 +24,30 @@
     <footer>
         <p>Contact us at: email@example.com | Phone: +1 234 567 8900</p>
     </footer>
-</body>
-</html>
+
+    <script>
+        async function sha256(message) {
+            const msgBuffer = new TextEncoder().encode(message);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        async function validateLogin(event) {
+            event.preventDefault(); // Prevent form from submitting normally
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const hashObj = {
+                'PlantScada': '6f7806c7aeb7a638bfeceff38d699527ce7677f532df96677457e7085be64eab',
+                'test1': 'ecd71870d1963316a97e3ac3408c9835ad8cf0f3c1bc703527c30265534f75ae'
+            };
+
+            const hashedPassword = await sha256(password);
+
+            if (hashObj[username] && hashedPassword === hashObj[username]) {
+                alert('Login successful! Redirecting...');
+
+                // Redirect based on username
+                if (username === 'PlantScada') {
+                 
