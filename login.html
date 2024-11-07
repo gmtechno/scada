@@ -10,12 +10,12 @@
     <section class="login-page">
         <div class="login-container">
             <h2>Client Login</h2>
-            <form id="login-form">
+            <form id="login-form" onsubmit="validateLogin(event)">
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" required>
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required>
-                <button type="button" onclick="validateLogin()">Login</button>
+                <button type="submit">Login</button>
             </form>
         </div>
     </section>
@@ -25,23 +25,40 @@
     </footer>
 
     <script>
-        function validateLogin() {
-            // Confirm function is triggered
-            alert("Login button clicked!");
+        // SHA-256 Hashing Function
+        async function sha256(message) {
+            const msgBuffer = new TextEncoder().encode(message);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        // Validate Login Function
+        async function validateLogin(event) {
+            event.preventDefault(); // Prevent default form submission
 
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
 
-            // Check if username and password fields are being read correctly
-            alert(`Username: ${username}, Password: ${password}`);
+            // Username and hashed password combinations
+            const hashObj = {
+                'PlantScada': '6f7806c7aeb7a638bfeceff38d699527ce7677f532df96677457e7085be64eab',
+                'test1': 'ecd71870d1963316a97e3ac3408c9835ad8cf0f3c1bc703527c30265534f75ae'
+            };
 
-            // Simple login validation for testing
-            if (username === 'PlantScada' && password === 'pumproom122') {
-                alert('Login successful! Redirecting to SCADA Page 1...');
-                window.location.href = 'scada1.html';
-            } else if (username === 'test1' && password === 'test123') {
-                alert('Login successful! Redirecting to SCADA Page 2...');
-                window.location.href = 'scada2.html';
+            // Generate SHA-256 hash of the entered password
+            const hashedPassword = await sha256(password);
+
+            // Check if username and hashed password match
+            if (hashObj[username] && hashedPassword === hashObj[username]) {
+                alert('Login successful! Redirecting...');
+
+                // Redirect based on username
+                if (username === 'PlantScada') {
+                    window.location.href = 'scada1.html';
+                } else if (username === 'test1') {
+                    window.location.href = 'scada2.html';
+                }
             } else {
                 alert('Invalid username or password');
             }
