@@ -10,12 +10,12 @@
     <section class="login-page">
         <div class="login-container">
             <h2>Client Login</h2>
-            <form id="login-form" onsubmit="validateLogin(event)">
+            <form id="login-form">
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" required>
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required>
-                <button type="submit">Login</button>
+                <button type="button" onclick="validateLogin()">Login</button>
             </form>
         </div>
     </section>
@@ -25,13 +25,17 @@
     </footer>
 
     <script>
-        function validateLogin(event) {
-            event.preventDefault(); // Prevent form submission
+        function validateLogin() {
+            // Confirm function is triggered
+            alert("Login button clicked!");
 
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
 
-            // Simple validation without hashing for testing purposes
+            // Check if username and password fields are being read correctly
+            alert(`Username: ${username}, Password: ${password}`);
+
+            // Simple login validation for testing
             if (username === 'PlantScada' && password === 'pumproom122') {
                 alert('Login successful! Redirecting to SCADA Page 1...');
                 window.location.href = 'scada1.html';
