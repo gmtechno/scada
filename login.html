@@ -53,12 +53,11 @@
             if (hashObj[username] && hashedPassword === hashObj[username]) {
                 alert('Login successful! Redirecting...');
 
-                // Redirect based on username
-                if (username === 'PlantScada') {
-                    window.location.href = 'scada1.html';
-                } else if (username === 'test1') {
-                    window.location.href = 'scada2.html';
-                }
+                // Delay redirection by 3 seconds and open in a new tab
+                setTimeout(() => {
+                    const redirectUrl = username === 'PlantScada' ? 'scada1.html' : 'scada2.html';
+                    window.open(redirectUrl, '_blank');
+                }, 3000); // 3-second delay
             } else {
                 alert('Invalid username or password');
             }
