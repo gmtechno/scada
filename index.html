@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +6,6 @@
     <title>Electromechanical & SCADA Solutions Company</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/png" href="favicon.png">
-    <script src="scripts.js" defer></script>
 </head>
 <body>
     <!-- Homepage -->
@@ -49,25 +47,9 @@
         </ul>
     </section>
 
-    <!-- Login Page -->
-    <section class="login-page" id="scada-login">
-        <div class="login-container">
-            <h2>Client Login</h2>
-            <form id="login-form">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-                <button type="button" onclick="validateLogin()">Login</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- SCADA iframe (Initially hidden) -->
-    <section class="scada-page" id="scada-page" style="display: none;">
-        <div class="scada-container">
-            <iframe id="scada-frame" src="" frameborder="0"></iframe>
-        </div>
+    <!-- Client Login Button -->
+    <section class="client-login">
+        <a href="login.html" class="client-login-btn">Client Login</a>
     </section>
 
     <footer>
