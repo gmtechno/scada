@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Client Login - SCADA Solutions</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/png" href="favicon.png">
 </head>
 <body>
     <section class="login-page">
@@ -26,28 +25,23 @@
     </footer>
 
     <script>
-        async function sha256(message) {
-            const msgBuffer = new TextEncoder().encode(message);
-            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
-            const hashArray = Array.from(new Uint8Array(hashBuffer));
-            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-        }
-
-        async function validateLogin(event) {
-            event.preventDefault(); // Prevent form from submitting normally
+        function validateLogin(event) {
+            event.preventDefault(); // Prevent form submission
 
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
-            const hashObj = {
-                'PlantScada': '6f7806c7aeb7a638bfeceff38d699527ce7677f532df96677457e7085be64eab',
-                'test1': 'ecd71870d1963316a97e3ac3408c9835ad8cf0f3c1bc703527c30265534f75ae'
-            };
 
-            const hashedPassword = await sha256(password);
-
-            if (hashObj[username] && hashedPassword === hashObj[username]) {
-                alert('Login successful! Redirecting...');
-
-                // Redirect based on username
-                if (username === 'PlantScada') {
-                 
+            // Simple validation without hashing for testing purposes
+            if (username === 'PlantScada' && password === 'pumproom122') {
+                alert('Login successful! Redirecting to SCADA Page 1...');
+                window.location.href = 'scada1.html';
+            } else if (username === 'test1' && password === 'test123') {
+                alert('Login successful! Redirecting to SCADA Page 2...');
+                window.location.href = 'scada2.html';
+            } else {
+                alert('Invalid username or password');
+            }
+        }
+    </script>
+</body>
+</html>
