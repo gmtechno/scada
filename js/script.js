@@ -34,12 +34,7 @@ document.getElementById("loginForm")?.addEventListener("submit", (e) => {
 });
 
 
-// Initialize EmailJS with your Public Key
-(function() {
-    emailjs.init("ZNbGF2rrkif7cvrDg"); // Replace with your actual Public Key
-})();
-
-// Add event listener to the form submission
+// Event listener for form submission
 document.getElementById('inquiryForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent default form submission
 

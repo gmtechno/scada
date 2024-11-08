@@ -39,8 +39,17 @@
         </form>
     </section>
 
-    <!-- Include the EmailJS SDK and the script.js file -->
-    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <!-- Updated EmailJS SDK and Initialization -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init({
+                publicKey: "ZNbGF2rrkif7cvrDg" // Replace with your actual Public Key
+            });
+        })();
+    </script>
+
+    <!-- Link to external JavaScript file -->
     <script src="js/script.js"></script>
 </body>
 </html>
