@@ -1,0 +1,244 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    color: #240046;
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Styling */
+header {
+    background-color: #3c096c;
+    padding: 1rem;
+    text-align: center;
+}
+
+header .logo {
+    font-size: 1.5rem;
+    color: #ff6d00;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li a {
+    color: #ff9e00; /* Darker shade for better visibility */
+    text-decoration: none;
+}
+
+/* General Button Styling */
+.button {
+    background-color: #ff8500; /* Main button color */
+    color: #ffffff; /* Button text color */
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-block;
+}
+
+.button:hover {
+    background-color: #ff7900; /* Hover color */
+    transform: scale(1.05); /* Slightly increase size on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a shadow on hover */
+}
+
+/* Hero Section with Background Image */
+.hero {
+    background: url('../images/hero section.png') no-repeat center center;
+    background-size: cover;
+    padding: 8rem 1rem;
+    text-align: center;
+    color: #ffffff;
+    position: relative;
+    min-height: 80vh;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(36, 0, 70, 0.5); /* Dark overlay for readability */
+    z-index: 1;
+}
+
+.hero h1, .hero p {
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    color: #ff9100;
+    margin: 0;
+}
+
+.hero p {
+    font-size: 1.3rem;
+    color: #ff9e00;
+    max-width: 800px;
+    margin: 1rem auto 0;
+}
+
+/* About Section with Gradient Background */
+.about-section {
+    background: linear-gradient(135deg, #3c096c 40%, #7b2cbf);
+    color: #ffffff;
+    padding: 5rem 1rem;
+    text-align: center;
+    min-height: 70vh;
+}
+
+/* Projects Section with Subtle Dotted Pattern */
+.projects-section {
+    background-color: #f8f8f8;
+    background-image: radial-gradient(circle, #ff6d00 1px, transparent 1px);
+    background-size: 20px 20px;
+    color: #240046;
+    padding: 5rem 1rem;
+    min-height: 70vh;
+    text-align: center;
+}
+
+/* Inquiry and Contact Sections with Light Background */
+.inquiry-section, .contact-section {
+    background: linear-gradient(135deg, #f8f8f8, #e6e6e6);
+    color: #240046;
+    padding: 5rem 1rem;
+    min-height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Login Section with Light Solid Background */
+.login-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    background-color: #f8f8f8;
+    padding: 2rem;
+}
+
+/* Form Styling for Consistency */
+.login-form, .inquiry-form {
+    background-color: #3c096c;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+.login-form h2, .inquiry-form h2 {
+    color: #ff6d00;
+    margin-bottom: 1.5rem;
+}
+
+.login-form label, .inquiry-form label {
+    display: block;
+    font-weight: bold;
+    color: #ff9e00;
+    margin-bottom: 0.5rem;
+    text-align: left;
+}
+
+/* Input Styling */
+.login-form input[type="text"],
+.login-form input[type="password"],
+.inquiry-form input[type="text"],
+.inquiry-form input[type="email"],
+.inquiry-form textarea {
+    width: 90%;
+    max-width: 350px;
+    padding: 0.75rem;
+    margin: 0 auto 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #5a189a;
+    color: #ffffff;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    display: block;
+}
+
+.login-form input[type="text"]:focus,
+.login-form input[type="password"]:focus,
+.inquiry-form input[type="text"]:focus,
+.inquiry-form input[type="email"]:focus,
+.inquiry-form textarea:focus {
+    background-color: #7b2cbf;
+    box-shadow: 0 0 8px rgba(255, 109, 0, 0.5);
+    outline: none;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #3c096c;
+    padding: 1rem;
+    text-align: center;
+    color: #ff9e00;
+}
+/* Center and style the contact section */
+.contact-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    background: linear-gradient(135deg, #f8f8f8, #e6e6e6);
+    padding: 2rem;
+    text-align: center;
+}
+
+.contact-details {
+    background-color: #3c096c;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    width: 100%;
+    color: #ffffff;
+}
+
+.contact-details h2 {
+    color: #ff6d00;
+    margin-bottom: 1rem;
+}
+
+.contact-details p {
+    color: #ff9e00;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    margin: 0.5rem 0;
+}
+
+.contact-details a {
+    color: #ff9100;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.contact-details a:hover {
+    color: #ff8500;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #3c096c;
+    padding: 1rem;
+    text-align: center;
+    color: #ff9e00;
+    font-size: 0.9rem;
+}
