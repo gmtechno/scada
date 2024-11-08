@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Login - SCADA Solutions</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <section class="login-page">
+        <div class="login-container">
+            <h2>Client Login</h2>
+            <form id="login-form" onsubmit="validateLogin(event)">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>Contact us at: email@example.com | Phone: +1 234 567 8900</p>
+    </footer>
+
+    <script>
+        // SHA-256 Hashing Function
+        async function sha256(message) {
+            const msgBuffer = new TextEncoder().encode(message);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        // Validate Login Function
+        async function validateLogin(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Username and hashed password combinations
+            const hashObj = {
+                'PlantScada': '6f7806c7aeb7a638bfeceff38d699527ce7677f532df96677457e7085be64eab',
+                'test1': 'ecd71870d1963316a97e3ac3408c9835ad8cf0f3c1bc703527c30265534f75ae'
+            };
+
+            // Generate SHA-256 hash of the entered password
+            const hashedPassword = await sha256(password);
+
+            // Check if username and hashed password match
+            if (hashObj[username] && hashedPassword === hashObj[username]) {
+                alert('Login successful! Redirecting...');
+
+                // Delay redirection by 3 seconds and open in a new tab
+                setTimeout(() => {
+                    const redirectUrl = username === 'PlantScada' ? 'scada1.html' : 'scada2.html';
+                    window.open(redirectUrl, '_blank');
+                }, 3000); // 3-second delay
+            } else {
+                alert('Invalid username or password');
+            }
+        }
+    </script>
+</body>
+</html>
