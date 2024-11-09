@@ -295,9 +295,14 @@ footer {
     margin: 0;
 }
 
-/* Make the iframe responsive and fill available space */
+/* Style for SCADA iframe */
 .scada-iframe {
     width: 100%;
     height: 100%;
     border: none;
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow */
+    border: 5px solid #5a189a; /* Add a solid border in your color palette */
+    padding: 8px; /* Space between iframe content and border */
+    background-color: #f8f8f8; /* Background color between iframe and border */
 }
