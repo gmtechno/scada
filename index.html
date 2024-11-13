@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Technosmart - Home</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsiveness.css">
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="logo">Technosmart</div>
         <nav>
@@ -23,17 +21,26 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
         <h1>Empowering Industries with Remote SCADA Monitoring</h1>
         <p>Technosmart specializes in automation and SCADA solutions, enabling seamless monitoring and control from anywhere in the world.</p>
     </section>
 
-    <!-- Footer -->
     <footer>
         <p>© 2024 Technosmart. All rights reserved.</p>
     </footer>
 
-    <script src="js/script.js"></script>
+    <script>
+        // JavaScript for ripple effect
+        const hero = document.querySelector('.hero');
+
+        hero.addEventListener('mouseenter', () => {
+            hero.classList.add('ripple');
+        });
+
+        hero.addEventListener('mouseleave', () => {
+            hero.classList.remove('ripple');
+        });
+    </script>
 </body>
 </html>
