@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Technosmart - Home</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css"> <!-- Ensure this path is correct -->
 </head>
 <body>
     <header>
@@ -21,26 +22,21 @@
         </nav>
     </header>
 
-    <section class="hero">
-        <h1>Empowering Industries with Remote SCADA Monitoring</h1>
-        <p>Technosmart specializes in automation and SCADA solutions, enabling seamless monitoring and control from anywhere in the world.</p>
+    <section style="max-height: 100%; margin: auto;">
+        <div id="ripple" class="hero">
+            <h1>Empowering Industries with Remote SCADA Monitoring</h1>
+            <p>Technosmart specializes in automation and SCADA solutions, enabling seamless monitoring and control from anywhere in the world.</p>
+        </div>
     </section>
 
     <footer>
         <p>© 2024 Technosmart. All rights reserved.</p>
     </footer>
 
-    <script>
-        // JavaScript for ripple effect
-        const hero = document.querySelector('.hero');
-
-        hero.addEventListener('mouseenter', () => {
-            hero.classList.add('ripple');
-        });
-
-        hero.addEventListener('mouseleave', () => {
-            hero.classList.remove('ripple');
-        });
-    </script>
+    <!-- Include jQuery and jQuery Ripples -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.ripples@0.6.3/dist/jquery.ripples.min.js"></script>
+    <!-- Custom Script -->
+    <script src="js/script.js"></script>
 </body>
 </html>

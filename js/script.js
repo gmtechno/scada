@@ -6,8 +6,8 @@ const users = {
         password: "pumproom122",
         redirectUrl: "scada1.html"
     },
-    "test1": {
-        password: "test123",
+    "flow_test": {
+        password: "Ax8Fl4!9",
         redirectUrl: "scada2.html"
     }
 };
@@ -58,5 +58,14 @@ document.getElementById('inquiryForm').addEventListener('submit', function(event
         // Error message
         console.error("Failed to send the message:", error);
         alert("Failed to send the message. Please try again later.");
+    });
+});
+
+
+$(document).ready(function() {
+    $('#ripple').ripples({
+        resolution: 512,
+        dropRadius: 20, // Radius of the ripple
+        perturbance: 0.04, // The intensity of the ripple
     });
 });
