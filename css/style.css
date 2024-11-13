@@ -118,7 +118,7 @@ footer {
 /* Stylish border and background for the iframe */
 .scada-iframe {
     width: 85%; /* Slightly narrower */
-    max-width: 1100px; /* Set a maximum width */
+    max-width: 1800px; /* Set a maximum width */
     height: 90%;
     border: none;
     border-radius: 20px; /* More rounded corners */
