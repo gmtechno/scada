@@ -6,7 +6,7 @@ const users = {
         password: "pumproom122",
         redirectUrl: "scada1.html"
     },
-    "flow_test": {
+    "BWTAGC": {
         password: "Ax8Fl4!9",
         redirectUrl: "scada2.html"
     }
