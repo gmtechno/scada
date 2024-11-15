@@ -1,5 +1,25 @@
 // script.js
 
+
+// Disable right-click on the entire document
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+}, false);
+
+// Disable right-click specifically within iframes
+window.addEventListener('load', function() {
+    const iframe = document.querySelector('.scada-iframe'); // Correctly targeting iframe
+    
+    // Check if iframe exists before applying the event listener
+    if (iframe) {
+        iframe.onload = function() {
+            iframe.contentWindow.document.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+            }, false);
+        };
+    }
+});
+
 // Define a dictionary of users and their SCADA pages
 const users = {
     "PlantScada": {
@@ -37,9 +57,8 @@ document.getElementById("loginForm")?.addEventListener("submit", (e) => {
     }
 });
 
-
 // Event listener for form submission
-document.getElementById('inquiryForm').addEventListener('submit', function(event) {
+document.getElementById('inquiryForm')?.addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent default form submission
 
     // Collect form data
@@ -64,7 +83,6 @@ document.getElementById('inquiryForm').addEventListener('submit', function(event
         alert("Failed to send the message. Please try again later.");
     });
 });
-
 
 $(document).ready(function() {
     $('#ripple').ripples({
