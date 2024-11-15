@@ -9,6 +9,10 @@ const users = {
     "BWTAGC": {
         password: "Ax8Fl4!9",
         redirectUrl: "scada2.html"
+    },
+    "FLOW": {
+        password: "FLOWTEST12@",
+        redirectUrl: "scada3.html"
     }
 };
 
