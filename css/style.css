@@ -5,7 +5,7 @@ html, {
     padding: 0;
     overflow-x: hidden; /* Restrict horizontal overflow */
     font-family: Arial, sans-serif;
-    background-color: #EDE8F5; /* Very Light Lavender background */
+    background-color: #f5f5f5; /* Updated background color */
     color: #3D52A0; /* Primary Dark Blue text color */
 	font-size: 1vw; /* This makes font-size responsive to screen width */
 }
@@ -19,6 +19,74 @@ body {
     color: #3D52A0; /* Primary Dark Blue text color */
 	font-size: 1rem; /* Default font-size */
     color: #3D52A0;
+}
+
+/* Add these new CSS variables at the top */
+:root {
+    /* ... existing variables ... */
+    --dark: rgb(20, 20, 20);
+    --right-bg-image: linear-gradient(rgba(61, 82, 160, 0.1), rgba(61, 82, 160, 0.1)), url('../images/hero section.png');
+    --left-bg-image: linear-gradient(rgba(61, 82, 160, 0.6), rgba(61, 82, 160, 0.6)), url('../images/hero section.png');
+    --left-bg-color: #7091E6;
+}
+
+/* Hero Styles */
+.hero-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.hero-side {
+    display: grid;
+    height: 100%;
+    place-items: center;
+    position: absolute;
+    transition: width 0.3s ease;
+    overflow: hidden;
+}
+
+#hero-left {
+    width: 0; /* Start with 0 width */
+    z-index: 2;
+}
+
+#hero-right {
+    width: 100%; /* Start with full width */
+}
+
+#hero-left .background-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--left-bg-image) no-repeat center center/cover;
+}
+
+#hero-right .background-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--right-bg-image) no-repeat center center/cover;
+}
+
+.hero-title {
+    font-family: "Montserrat", sans-serif;
+    font-size: 4vw;
+    font-weight: 800;
+    margin: 0 10vw;
+    width: 80vw;
+    position: relative;
+    z-index: 2;
+    color: #FFFFFF;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-title .fancy {
+    font-family: "Permanent Marker", cursive;
+    font-size: 1.8em;
+    line-height: 0.6em;
+    color: var(--left-bg-color);
 }
 
 /* Responsive font size for text and headings */
@@ -224,16 +292,8 @@ footer {
     align-items: center;
     overflow: hidden;
 }
-/* Ripple animation */
-@keyframes rippleEffect {
-    0% { background-position: 50% 50%; }
-    50% { background-position: 51% 51%; }
-    100% { background-position: 50% 50%; }
-}
 
-.hero.ripple {
-    animation: rippleEffect 5s infinite ease-in-out;
-}
+
 .hero h1 {
     font-size: 3rem;
     color: #FFFFFF; /* Bright white for better readability */

@@ -1,6 +1,38 @@
 // script.js
 
 
+document.addEventListener('DOMContentLoaded', function() {
+    const leftSide = document.getElementById("hero-left");
+    const rightSide = document.getElementById("hero-right");
+    const threshold = 50; // percentage threshold for transition
+
+    const handleMove = (e) => {
+        const newWidth = (e.clientX / window.innerWidth) * 100;
+        leftSide.style.width = `${newWidth}%`;
+        rightSide.style.width = `${100 - newWidth}%`;
+
+        // Adjust opacity of the dark overlay based on position
+        const leftTitle = leftSide.querySelector('.hero-title');
+        if (newWidth > threshold) {
+            leftTitle.style.opacity = '1';
+            leftSide.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+        } else {
+            leftTitle.style.opacity = '0.9';
+            leftSide.style.backgroundColor = 'transparent';
+        }
+    };
+
+    // Set initial state
+    leftSide.style.width = '0%';
+    rightSide.style.width = '100%';
+
+    // Handle mouse movement
+    document.onmousemove = (e) => handleMove(e);
+
+    // Handle touch movement for mobile users
+    document.ontouchmove = (e) => handleMove(e.touches[0]);
+});
+
 // Disable right-click on the entire document
 document.addEventListener('contextmenu', function(e) {
     e.preventDefault();
