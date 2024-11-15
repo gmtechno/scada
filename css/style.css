@@ -1,5 +1,5 @@
 /* General reset for body and html */
-html, body {
+html, {
     height: 100%;
     margin: 0;
     padding: 0;
@@ -7,7 +7,116 @@ html, body {
     font-family: Arial, sans-serif;
     background-color: #EDE8F5; /* Very Light Lavender background */
     color: #3D52A0; /* Primary Dark Blue text color */
+	font-size: 1vw; /* This makes font-size responsive to screen width */
 }
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Restrict horizontal overflow */
+    font-family: Arial, sans-serif;
+    background-color: #EDE8F5; /* Very Light Lavender background */
+    color: #3D52A0; /* Primary Dark Blue text color */
+	font-size: 1rem; /* Default font-size */
+    color: #3D52A0;
+}
+
+/* Responsive font size for text and headings */
+h1 {
+    font-size: 2.5rem; /* Scales with viewport */
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+p, label, li {
+    font-size: 1rem;
+    line-height: 1.6; /* Improve readability */
+}
+
+/* Responsive font size adjustment for smaller screens */
+@media (max-width: 1024px) {
+    html {
+        font-size: 1.2vw; /* Slightly larger font-size for tablets */
+    }
+
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    p, label, li {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 768px) {
+    html {
+        font-size: 1.5vw; /* Larger font-size for mobile devices */
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    p, label, li {
+        font-size: 0.9rem;
+    }
+}
+
+/* Responsive adjustment for smaller screens */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column; /* Stack vertically only on small screens */
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 0.5rem 0; /* Add spacing between stacked items */
+    }
+}
+
+/* Layout adjustments for smaller screens */
+main .content {
+    padding: 1rem; /* Reduce padding for smaller screens */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 0;
+    margin: 0;
+    flex-direction: row; /* Horizontal by default */
+}
+
+/* Navigation button styling */
+nav ul li a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: 0.5rem 1rem;
+    background-color: #3D52A0;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover effect for buttons */
+nav ul li a:hover {
+    background-color: #8697C4;
+    transform: scale(1.05);
+}
+
 /* Sticky Footer Layout */
 body {
     display: flex;
