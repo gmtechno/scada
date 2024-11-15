@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="logo">Technosmart</div>
         <nav>
@@ -21,12 +20,12 @@
             </ul>
         </nav>
     </header>
-
-    <!-- Inquiry Section -->
+<main>
     <section class="inquiry-section">
         <div class="inquiry-box">
+            <h2>Place an Inquiry</h2>
+            <p>We’re here to help you with all your automation and SCADA needs. Please fill out the form below, and our team will get back to you as soon as possible.</p>
             <form id="inquiryForm" class="inquiry-form">
-                <h2>Place an Inquiry</h2>
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" placeholder="Enter your name" required>
 
@@ -40,20 +39,12 @@
             </form>
         </div>
     </section>
-
-    <!-- EmailJS SDK and Initialization -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script type="text/javascript">
-        (function() {
-            emailjs.init("ZNbGF2rrkif7cvrDg");
-        })();
-    </script>
-
-    <!-- External JavaScript file for form submission -->
-    <script src="js/script.js"></script>
-	
-	<footer>
+<main>
+    <footer>
         <p>© 2024 Technosmart. All rights reserved.</p>
     </footer>
+
+    <!-- JavaScript for form submission -->
+    <script src="js/script.js"></script>
 </body>
 </html>

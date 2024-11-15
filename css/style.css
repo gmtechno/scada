@@ -3,10 +3,60 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    overflow-x: hidden; /* Restrict horizontal overflow */
     font-family: Arial, sans-serif;
     background-color: #EDE8F5; /* Very Light Lavender background */
     color: #3D52A0; /* Primary Dark Blue text color */
+}
+/* Sticky Footer Layout */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+textscada .content {
+    text-align: center; /* Center text horizontally */
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    max-width: 800px; /* Optional: Limit max-width for better readability */
+}
+/* Center text in sections inside the main content */
+main .content {
+    text-align: center; /* Center text horizontally */
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    max-width: 800px; /* Optional: Limit max-width for better readability */
+}
+
+main .content h1, 
+main .content h2 {
+    margin-bottom: 1rem;
+    color: #3D52A0; /* Dark blue for headings */
+}
+
+main .content p {
+    margin-bottom: 1.5rem;
+    color: #3D52A0; /* Dark blue for text */
+}
+
+main .content ol {
+    text-align: left; /* Align ordered list text to the left for readability */
+    padding-left: 1.5rem; /* Add padding to indent the list */
+}
+
+main .content ol li {
+    margin-bottom: 1rem;
+}
+
+main .content ul {
+    padding-left: 1.5rem; /* Add padding to indent the nested list */
+    margin-bottom: 1rem;
+}
+
+}
+footer {
+    font-size: 0.9rem;
+    color: #8697C4; /* Light Blue text color for footer */
 }
 
 /* Header and Footer Styling */
@@ -413,26 +463,27 @@ body {
 }
 
 /* Contact Section Styling */
+/* Adjust layout for contact-section to stack content and form vertically */
 .contact-section {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    min-height: 60vh;
     text-align: center;
+    padding: 2rem;
 }
 
 .contact-content {
     max-width: 600px;
-    padding: 2rem;
+    margin-bottom: 2rem;
 }
-/* Footer Styling */
-footer {
+
+.inquiry-box {
+    background-color: #FFFFFF;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    max-width: 500px;
     width: 100%;
-    padding: 1.5rem;
     text-align: center;
-    background-color: #7091E6; /* Medium Blue background */
-    color: #FFFFFF; /* White text color */
-    position: relative; /* Ensure footer is positioned relatively */
-    bottom: 0;
 }
 
