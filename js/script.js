@@ -53,42 +53,66 @@ window.addEventListener('load', function() {
 });
 
 // Define a dictionary of users and their SCADA pages
+// Update the users object to include unique IDs for each SCADA page
 const users = {
     "PlantScada": {
         password: "pumproom122",
-        redirectUrl: "scada1.html"
+        redirectUrl: "scada1.html",
+        sessionId: null
     },
     "BWTAGC": {
         password: "Ax8Fl4!9",
-        redirectUrl: "scada2.html"
+        redirectUrl: "scada2.html",
+        sessionId: null
     },
     "FLOW": {
         password: "FLOWTEST12@",
-        redirectUrl: "scada3.html"
+        redirectUrl: "scada3.html",
+        sessionId: null
     }
 };
 
+
+// Function to generate unique session ID
+function generateSessionId(length) {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = '';
+    for (let i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    return result;
+}
+
+
 // Functionality for the login form
+
+// Update the login form event listener
 document.getElementById("loginForm")?.addEventListener("submit", (e) => {
-    e.preventDefault(); // Prevent form submission
+    e.preventDefault();
 
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
 
     // Check if the username exists and the password matches
     if (users[username] && users[username].password === password) {
-        alert("Successful Login"); // Display success message
+        // Generate a session ID
+        const sessionId = generateSessionId(15);
+        users[username].sessionId = sessionId;
 
-        // Redirect to the relevant SCADA page after 1 second delay
+        // Store the session information
+        sessionStorage.setItem('currentUser', username);
+        sessionStorage.setItem('sessionId', sessionId);
+
+        alert("Successful Login");
+
+        // Redirect to the SCADA page with session ID
         setTimeout(() => {
-            window.location.href = users[username].redirectUrl;
+            window.location.href = `${users[username].redirectUrl}?sid=${sessionId}`;
         }, 1000);
     } else {
-        // Display an error message if credentials are incorrect
         alert("Incorrect username or password. Please try again.");
     }
 });
-
 // Event listener for form submission
 document.getElementById('inquiryForm')?.addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent default form submission
@@ -140,3 +164,5 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+

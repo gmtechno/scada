@@ -5,7 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SCADA Live Feed - Plant 1</title>
     <link rel="stylesheet" href="css/style.css">
+	<script>
+// Add this at the beginning of each SCADA page
+function verifyScadaAccess() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const sessionId = urlParams.get('sid');
+    const currentUser = sessionStorage.getItem('currentUser');
+    const storedSessionId = sessionStorage.getItem('sessionId');
+
+    // Verify session
+    if (!sessionId || !currentUser || sessionId !== storedSessionId) {
+        // Invalid session, redirect to login
+        window.location.href = 'login.html';
+        return false;
+    }
+
+    // Optional: Check if user has access to this specific SCADA page
+    const userRedirectUrl = users[currentUser]?.redirectUrl;
+    const currentPage = window.location.pathname.split('/').pop();
+    
+    if (userRedirectUrl !== currentPage) {
+        window.location.href = 'login.html';
+        return false;
+    }
+
+    return true;
+}
+
+// Run verification when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    if (!verifyScadaAccess()) {
+        console.log('Access verification failed');
+    }
+});
+
+// Add logout functionality
+function logout() {
+    sessionStorage.clear();
+    window.location.href = 'login.html';
+}
+</script>
+	
 </head>
+
 <body>
 <header>
     <div class="logo">Technosmart</div>
@@ -23,6 +65,8 @@
         </li>
         <li><a href="contact.html" class="button">Contact Us</a></li>
         <li><a href="login.html" class="button">Client Login</a></li>
+		        <!-- Add logout button here -->
+            <li><a href="#" class="button logout-btn" onclick="logout(); return false;">Logout</a></li>
     </ul>
 </nav>
 </header>

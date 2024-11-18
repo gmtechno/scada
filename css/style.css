@@ -969,3 +969,29 @@ body {
         padding: 1rem 2rem;
     }
 }
+
+/* Update logout button styles to match your navigation */
+.logout-btn {
+    background-color: #dc3545 !important; /* Red background */
+    color: white !important;
+    transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+    background-color: #c82333 !important; /* Darker red on hover */
+}
+
+/* If you want to add an icon, you can use ::before */
+.logout-btn::before {
+    content: '⇥'; /* Logout symbol */
+    margin-right: 5px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .logout-btn {
+        /* Ensure it's visible in mobile menu */
+        display: block;
+        text-align: center;
+    }
+}
