@@ -1,3 +1,6 @@
+
+
+
 /* General reset for body and html */
 html, {
     height: 100%;
@@ -78,15 +81,16 @@ body {
     width: 80vw;
     position: relative;
     z-index: 2;
-    color: #FFFFFF;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    color: #ADD8E6;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
 }
 
 .hero-title .fancy {
     font-family: "Permanent Marker", cursive;
     font-size: 1.8em;
     line-height: 0.6em;
-    color: var(--left-bg-color);
+    color: #ADFF2F; /* Changed to bright yellow */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
 }
 
 /* Responsive font size for text and headings */
@@ -165,6 +169,152 @@ nav ul {
     padding: 0;
     margin: 0;
     flex-direction: row; /* Horizontal by default */
+}
+
+/* Horizontal Cascading Dropdown Menu Styles */
+.nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+.dropdown {
+    position: relative;
+}
+
+/* Add this new style to create an invisible bridge */
+.dropdown::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 20px; /* Adjust this value to bridge the gap */
+    bottom: -20px;
+    left: 0;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: calc(100% + 10px); /* Adjust spacing from button */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color:  rgba(0, 0, 0, 0.8);
+    min-width: 200px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    padding: 0.5rem 0;
+    z-index: 1001;
+    
+    /* Horizontal cascade properties */
+    flex-direction: row;
+    width: max-content;
+    transition: all 0.3s ease;
+}
+
+/* Add padding to top of dropdown to extend hover area */
+.dropdown-content::before {
+    content: '';
+    position: absolute;
+    top: -10px; /* Match the gap to the button */
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background: transparent;
+}
+
+.dropdown:hover .dropdown-content {
+    display: flex;
+    animation: slideIn 0.3s ease forwards;
+}
+
+.dropdown-content li {
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+
+.dropdown-content li:not(:last-child)::after {
+    content: '›';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #FFFFFF;
+    font-size: 1.2rem;
+}
+
+.dropdown-content a {
+    color: #FFFFFF;
+    padding: 0.75rem 2rem 0.75rem 1rem;
+    text-decoration: none;
+    display: block;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    background-color: transparent;
+}
+
+.dropdown-content a:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+    transform: translateX(5px);
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+/* Mobile Responsive Dropdown */
+@media (max-width: 768px) {
+    .dropdown::after,
+    .dropdown-content::before {
+        display: none; /* Remove the bridge elements on mobile */
+    }
+
+/* Horizontal Cascading Dropdown Menu Styles */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8); /* Changed to light black */
+    min-width: 200px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    padding: 0.5rem 0;
+    z-index: 1001;
+    
+    /* Horizontal cascade properties */
+    flex-direction: row;
+    width: max-content;
+    transition: all 0.3s ease;
+}
+
+    .dropdown-content li::after {
+        display: none;
+    }
+
+    .dropdown-content a {
+        padding: 0.75rem 1rem;
+    }
+
+    .dropdown-content a:hover {
+        transform: none;
+    }
+
+    .dropdown.active .dropdown-content {
+        display: flex;
+    }
 }
 
 /* Navigation button styling */
@@ -670,3 +820,152 @@ body {
     text-align: center;
 }
 
+
+/* Horizontal Layout */
+.horizontal-layout {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.column {
+    flex: 1;
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Alert Boxes */
+.alert-box {
+    flex: 1;
+    text-align: center;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.alert-box:hover {
+    transform: translateY(-5px);
+}
+
+/* Feature Box */
+.feature-box {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin: 2rem 0;
+}
+
+/* Benefits Grid */
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.benefit-item {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.benefit-item:hover {
+    transform: translateY(-5px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .horizontal-layout {
+        flex-direction: column;
+    }
+
+    .benefits-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .column, .alert-box {
+        margin-bottom: 1rem;
+    }
+}
+
+/* Dashboard Demo Button Styles */
+.dashboard-demo {
+    text-align: center;
+    padding: 2rem 0;
+    margin: 2rem 0;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); /* Rich blue gradient background */
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Add subtle pattern overlay */
+.dashboard-demo::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(255,255,255,0.1) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, rgba(255,255,255,0.1) 75%),
+        linear-gradient(-45deg, transparent 75%, rgba(255,255,255,0.1) 75%);
+    background-size: 20px 20px;
+    opacity: 0.1;
+}
+
+.dashboard-btn {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.2rem 2.5rem;
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    border: 1px solid rgba(255,255,255,0.2);
+    position: relative;
+    z-index: 1;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.dashboard-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    border-color: rgba(255,255,255,0.3);
+}
+
+.btn-description {
+    font-size: 0.9rem;
+    margin-top: 0.7rem;
+    opacity: 0.9;
+    font-weight: normal;
+    color: rgba(255,255,255,0.9);
+}
+
+/* Add responsive padding */
+@media (max-width: 768px) {
+    .dashboard-demo {
+        margin: 1rem;
+        padding: 1.5rem 0;
+    }
+    
+    .dashboard-btn {
+        padding: 1rem 2rem;
+    }
+}

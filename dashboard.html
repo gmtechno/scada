@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCADA Dashboard</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <nav class="dashboard-nav">
+            <div class="logo">TECHNO SCADA</div>
+            <div class="system-time" id="systemTime"></div>
+        </nav>
+
+        <div class="main-content">
+            <div class="pump-section">
+                <h2>Pump Controls</h2>
+                <div class="pump-controls">
+                    <!-- Pump 1 -->
+                    <div class="pump-unit" id="pump1">
+                        <h3>Pump 1</h3>
+                        <div class="status-indicator" id="pump1-status"></div>
+                        <div class="pump-data">
+                            <p>Speed: <span id="pump1-speed">0</span> Hz</p>
+                            <p>Current: <span id="pump1-current">0</span> A</p>
+                        </div>
+                        <div class="pump-controls">
+                            <button onclick="pumpSystem.togglePump(1)">Start/Stop</button>
+                            <input type="range" id="pump1-speed-control" min="0" max="50" value="0" 
+                                   onchange="pumpSystem.adjustSpeed(1, this.value)">
+                        </div>
+                    </div>
+
+                    <!-- Pump 2 -->
+                    <div class="pump-unit" id="pump2">
+                        <h3>Pump 2</h3>
+                        <div class="status-indicator" id="pump2-status"></div>
+                        <div class="pump-data">
+                            <p>Speed: <span id="pump2-speed">0</span> Hz</p>
+                            <p>Current: <span id="pump2-current">0</span> A</p>
+                        </div>
+                        <div class="pump-controls">
+                            <button onclick="pumpSystem.togglePump(2)">Start/Stop</button>
+                            <input type="range" id="pump2-speed-control" min="0" max="50" value="0"
+                                   onchange="pumpSystem.adjustSpeed(2, this.value)">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="system-parameters">
+                <h2>System Parameters</h2>
+                <div class="parameters-grid">
+                    <div class="parameter">
+                        <h3>Inlet Pressure</h3>
+                        <p><span id="inlet-pressure">0</span> bar</p>
+                    </div>
+                    <div class="parameter">
+                        <h3>Outlet Pressure</h3>
+                        <p><span id="outlet-pressure">0</span> bar</p>
+                    </div>
+                    <div class="parameter">
+                        <h3>Flow Rate</h3>
+                        <p><span id="flow-rate">0</span> m³/h</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alarms-section">
+                <h2>Active Alarms</h2>
+                <div id="alarms-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

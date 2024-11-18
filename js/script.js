@@ -123,3 +123,20 @@ $(document).ready(function() {
         perturbance: 0.04, // The intensity of the ripple
     });
 });
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Existing script code...
+
+    // Mobile dropdown functionality
+    const dropdowns = document.querySelectorAll('.dropdown');
+    
+    dropdowns.forEach(dropdown => {
+        dropdown.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                dropdown.classList.toggle('active');
+            }
+        });
+    });
+});

@@ -7,17 +7,25 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header>
-        <div class="logo">Technosmart</div>
-        <nav>
-             <ul>
-				<li><a href="index.html" class="button">Home</a></li>
-                <li><a href="about.html" class="button">About</a></li>
-                <li><a href="contact.html" class="button">Contact Us</a></li>
-                <li><a href="login.html" class="button">Client Login</a></li>
+<header>
+    <div class="logo">Technosmart</div>
+<nav>
+    <ul>
+        <li><a href="index.html" class="button">Home</a></li>
+        <li class="dropdown">
+            <a href="#" class="button" onclick="return false;">About</a> <!-- Made unclickable -->
+            <ul class="dropdown-content">
+                <li><a href="scada_systems.html">SCADA Systems</a></li> <!-- Added link -->
+                <li><a href="booster-pump.html">Booster Pump Stations</a></li>
+                <li><a href"#" class="button" onclick="return false;">Sump Pump Stations</a></li>
+                <li><a href"#" class="button" onclick="return false;">Others</a></li>
             </ul>
-        </nav>
-    </header>
+        </li>
+        <li><a href="contact.html" class="button">Contact Us</a></li>
+        <li><a href="login.html" class="button">Client Login</a></li>
+    </ul>
+</nav>
+</header>
 <main>
     <section class="scada-section">
     <div class="iframe-overlay"></div>
