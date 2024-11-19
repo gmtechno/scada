@@ -61,7 +61,7 @@ const users = {
         sessionId: null
     },
     "BWTAGC": {
-        password: "Ax8Fl4!9",
+        password: "BwT2024",
         redirectUrl: "scada2.html",
         sessionId: null
     },
