@@ -65,6 +65,8 @@ function logout() {
         <li><a href="login.html" class="button">Client Login</a></li>
 		        <!-- Add logout button here -->
             <li><a href="#" class="button logout-btn" onclick="logout(); return false;">Logout</a></li>
+			 <!-- New Request Historical Data Button -->
+            <li><a href="#" id="requestHistoryButton" class="button">Request History</a></li>
     </ul>
 </nav>
 </header>
@@ -77,6 +79,42 @@ function logout() {
     <footer>
         <p>© 2024 Technosmart. All rights reserved.</p>
     </footer>
+	<!-- JavaScript for request handling -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+    (function() {
+        emailjs.init("ZNbGF2rrkif7cvrDg");
+    })();
+
+    document.getElementById('requestHistoryButton').addEventListener('click', function() {
+        // Collect necessary data for the request
+        const currentUser = sessionStorage.getItem('currentUser');
+        const email = prompt("Please enter your email to receive the historical data:");
+
+        // Validate that the email is provided
+        if (!email) {
+            alert("Email is required to request historical data.");
+            return;
+        }
+
+        // Prepare the request data
+        const requestData = {
+            name: currentUser || "Unknown User", // Use the current user's name or a default
+            email: email,
+            message: "Request for historical data." // You can customize this message
+        };
+
+        // Send the request using EmailJS
+        emailjs.send("service_nth9fox", "template_jo16xv8", requestData)
+            .then(function(response) {
+                alert("Your request for historical data has been sent successfully!");
+            })
+            .catch(function(error) {
+                console.error("Failed to send the request:", error);
+                alert("Failed to send the request. Please try again later.");
+            });
+    });
+</script>
 	  <!-- JavaScript for login functionality -->
     <script src="js/script.js"></script>
 </body>
