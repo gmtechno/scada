@@ -5,117 +5,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SCADA Live Feed - Plant 2</title>
     <link rel="stylesheet" href="css/style.css">
-    <script>
-        // Add this at the beginning of each SCADA page
-        function verifyScadaAccess() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const sessionId = urlParams.get('sid');
-            const currentUser = sessionStorage.getItem('currentUser');
-            const storedSessionId = sessionStorage.getItem('sessionId');
+	<script>
+// Add this at the beginning of each SCADA page
+function verifyScadaAccess() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const sessionId = urlParams.get('sid');
+    const currentUser = sessionStorage.getItem('currentUser');
+    const storedSessionId = sessionStorage.getItem('sessionId');
 
-            // Verify session
-            if (!sessionId || !currentUser || sessionId !== storedSessionId) {
-                // Invalid session, redirect to login
-                window.location.href = 'login.html';
-                return false;
-            }
+    // Verify session
+    if (!sessionId || !currentUser || sessionId !== storedSessionId) {
+        // Invalid session, redirect to login
+        window.location.href = 'login.html';
+        return false;
+    }
 
-            // Optional: Check if user has access to this specific SCADA page
-            const userRedirectUrl = users[currentUser]?.redirectUrl;
-            const currentPage = window.location.pathname.split('/').pop();
-            
-            if (userRedirectUrl !== currentPage) {
-                window.location.href = 'login.html';
-                return false;
-            }
+    // Optional: Check if user has access to this specific SCADA page
+    const userRedirectUrl = users[currentUser]?.redirectUrl;
+    const currentPage = window.location.pathname.split('/').pop();
+    
+    if (userRedirectUrl !== currentPage) {
+        window.location.href = 'login.html';
+        return false;
+    }
 
-            return true;
-        }
+    return true;
+}
 
-        // Run verification when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            if (!verifyScadaAccess()) {
-                console.log('Access verification failed');
-            }
-        });
+// Run verification when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    if (!verifyScadaAccess()) {
+        console.log('Access verification failed');
+    }
+});
 
-        // Add logout functionality
-        function logout() {
-            sessionStorage.clear();
-            window.location.href = 'login.html';
-        }
-    </script>
+// Add logout functionality
+function logout() {
+    sessionStorage.clear();
+    window.location.href = 'login.html';
+}
+</script>
 </head>
 <body>
 <header>
     <div class="logo">Technosmart</div>
-    <nav>
-        <ul>
-            <li><a href="index.html" class="button">Home</a></li>
-            <li class="dropdown">
-                <a href="#" class="button" onclick="return false;">About</a> <!-- Made unclickable -->
-                <ul class="dropdown-content">
-                    <li><a href="scada_systems.html">SCADA Systems</a></li> <!-- Added link -->
-                    <li><a href="booster-pump.html">Booster Pump Stations</a></li>
-                    <li><a href="#" class="button" onclick="return false;">Sump Pump Stations</a></li>
-                    <li><a href="#" class="button" onclick="return false;">Others</a></li>
-                </ul>
-            </li>
-            <li><a href="contact.html" class="button">Contact Us</a></li>
-            <li><a href="login.html" class="button">Client Login</a></li>
+<nav>
+    <ul>
+        <li><a href="index.html" class="button">Home</a></li>
+        <li class="dropdown">
+            <a href="#" class="button" onclick="return false;">About</a> <!-- Made unclickable -->
+            <ul class="dropdown-content">
+                <li><a href="scada_systems.html">SCADA Systems</a></li> <!-- Added link -->
+                <li><a href="booster-pump.html">Booster Pump Stations</a></li>
+                <li><a href"#" class="button" onclick="return false;">Sump Pump Stations</a></li>
+                <li><a href"#" class="button" onclick="return false;">Others</a></li>
+            </ul>
+        </li>
+        <li><a href="contact.html" class="button">Contact Us</a></li>
+        <li><a href="login.html" class="button">Client Login</a></li>
+		        <!-- Add logout button here -->
             <li><a href="#" class="button logout-btn" onclick="logout(); return false;">Logout</a></li>
-            <!-- New Request Historical Data Button -->
-            <li><a href="#" id="requestHistoryButton" class="button">Request History</a></li>
-        </ul>
-    </nav>
+    </ul>
+</nav>
 </header>
-
 <main>
     <section class="scada-section">
-        <div class="iframe-overlay"></div>
+	<div class="iframe-overlay"></div>
         <iframe src="https://web.eu.v-box.net/box-zt-web/web/html/pv.html?t=be298898197b40a1a0da564209b69593&uid=1012104&o=a6dabeefb53aba7f0cd41a2a3c0a512f&isPermission=1" class="scada-iframe"></iframe>
     </section>
-</main>
-
-<footer>
-    <p>© 2024 Technosmart. All rights reserved.</p>
-</footer>
-
-<!-- JavaScript for request handling -->
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script>
-    (function() {
-        emailjs.init("ZNbGF2rrkif7cvrDg");
-    })();
-
-    document.getElementById('requestHistoryButton').addEventListener('click', function() {
-        // Collect necessary data for the request
-        const currentUser = sessionStorage.getItem('currentUser');
-        const email = prompt("Please enter your email to receive the historical data:");
-
-        // Validate that the email is provided
-        if (!email) {
-            alert("Email is required to request historical data.");
-            return;
-        }
-
-        // Prepare the request data
-        const requestData = {
-            name: currentUser || "Unknown User", // Use the current user's name or a default
-            email: email,
-            message: "Request for historical data." // You can customize this message
-        };
-
-        // Send the request using EmailJS
-        emailjs.send("service_nth9fox", "template_jo16xv8", requestData)
-            .then(function(response) {
-                alert("Your request for historical data has been sent successfully!, allow for upto 1 working day(s) for our team to send it");
-            })
-            .catch(function(error) {
-                console.error("Failed to send the request:", error);
-                alert("Failed to send the request. Please try again later.");
-            });
-    });
-</script>
+<main>
+    <footer>
+        <p>© 2024 Technosmart. All rights reserved.</p>
+    </footer>
+	  <!-- JavaScript for login functionality -->
+    <script src="js/script.js"></script>
 </body>
 </html>
